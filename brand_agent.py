@@ -5,7 +5,7 @@ import os
 import json
 import shutil
 import requests
-import tempfile  # <--- NEW IMPORT
+import tempfile
 
 # --- RAG LIBRARIES ---
 from langchain_community.vectorstores import Chroma
@@ -141,8 +141,7 @@ if process_btn and video_url:
         
             analysis = analyze_safety(transcript, brand_name, brand_guidelines)
             data = json.loads(analysis)
-            
-            # Store analysis data in session state
+      
             st.session_state.analysis_data = data
        
             st.session_state.retriever = setup_rag(transcript)
@@ -152,7 +151,7 @@ if process_btn and video_url:
         except Exception as e:
             st.error(f"Pipeline Error: {e}")
 
-# --- DISPLAY ANALYSIS STATS (Persistent) ---
+# --- DISPLAY ANALYSIS STATS ---
 if st.session_state.analysis_data:
     st.divider()
     
